@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360" style="background:#0a0d18; border-radius:12px; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; overflow:hidden;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#0a0d18" />
+      <stop offset="100%" stop-color="#050814" />
+    </linearGradient>
+
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="streamA" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="streamB" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0" />
+      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.4" />
+      <circle cx="40" cy="40" r="1" fill="#38bdf8" fill-opacity="0.25" />
+    </pattern>
+
+    <style>
+      .node-pulse {
+        animation: pulse 3s ease-in-out infinite alternate;
+      }
+      .node-pulse-slow {
+        animation: pulse 4.5s ease-in-out infinite alternate;
+      }
+      .particle-flow-1 {
+        animation: flow1 8s linear infinite;
+      }
+      .particle-flow-2 {
+        animation: flow2 10s linear infinite;
+      }
+      .pill-float {
+        animation: float 4s ease-in-out infinite alternate;
+      }
+      @keyframes pulse {
+        0% { r: 3.5px; opacity: 0.4; }
+        100% { r: 6.5px; opacity: 1; }
+      }
+      @keyframes flow1 {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes flow2 {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: 1000; }
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-6px); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="360" fill="url(#bgGlow)" />
+  <rect width="1200" height="360" fill="url(#grid)" />
+
+  <!-- Dynamic / Animated Flowing Background Circuit Paths -->
+  <g opacity="0.6">
+    <path d="M 0 60 Q 300 20 600 80 T 1200 40" fill="none" stroke="url(#streamA)" stroke-width="2" stroke-dasharray="12 16" class="particle-flow-1" />
+    <path d="M 0 300 Q 350 350 700 290 T 1200 320" fill="none" stroke="url(#streamB)" stroke-width="2" stroke-dasharray="14 18" class="particle-flow-2" />
+    <path d="M 100 0 C 150 180 250 160 300 360" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="6 8" class="particle-flow-1" />
+    <path d="M 1100 0 C 1050 160 950 190 900 360" fill="none" stroke="#c084fc" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="6 8" class="particle-flow-2" />
+  </g>
+
+  <!-- Dynamic Pulsing Micro Nodes (Background Layer) -->
+  <circle cx="180" cy="70" r="4" fill="#38bdf8" class="node-pulse" filter="url(#glow)" />
+  <circle cx="1020" cy="80" r="5" fill="#818cf8" class="node-pulse-slow" filter="url(#glow)" />
+  <circle cx="150" cy="280" r="5" fill="#c084fc" class="node-pulse-slow" filter="url(#glow)" />
+  <circle cx="1060" cy="290" r="4" fill="#38bdf8" class="node-pulse" filter="url(#glow)" />
+
+  <!-- Animated Interactive Pills (Floating in Corners / Non-Obstructive) -->
+  <g class="pill-float">
+    <g transform="translate(60, 40)">
+      <rect width="160" height="32" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.5" />
+      <circle cx="16" cy="16" r="5" fill="#38bdf8" />
+      <text x="30" y="21" fill="#e2e8f0" font-size="12" font-weight="600" letter-spacing="0.5">PROMPT EVALS</text>
+    </g>
+    <g transform="translate(980, 40)">
+      <rect width="160" height="32" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#818cf8" stroke-width="1" stroke-opacity="0.5" />
+      <circle cx="16" cy="16" r="5" fill="#818cf8" />
+      <text x="30" y="21" fill="#e2e8f0" font-size="12" font-weight="600" letter-spacing="0.5">AGENTIC FLOWS</text>
+    </g>
+    <g transform="translate(70, 290)">
+      <rect width="150" height="32" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#a855f7" stroke-width="1" stroke-opacity="0.5" />
+      <circle cx="16" cy="16" r="5" fill="#a855f7" />
+      <text x="30" y="21" fill="#e2e8f0" font-size="12" font-weight="600" letter-spacing="0.5">LLM TRACING</text>
+    </g>
+    <g transform="translate(970, 290)">
+      <rect width="170" height="32" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.5" />
+      <circle cx="16" cy="16" r="5" fill="#38bdf8" />
+      <text x="30" y="21" fill="#e2e8f0" font-size="12" font-weight="600" letter-spacing="0.5">STRUCTURED I/O</text>
+    </g>
+  </g>
+
+  <!-- Foreground Title and Subtitle (Crisp, High Contrast, Centered) -->
+  <g id="foreground-content">
+    <!-- Top Category Pill -->
+    <rect x="475" y="55" width="250" height="28" rx="14" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.7" />
+    <text x="600" y="74" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="700" letter-spacing="1.5">ENTERPRISE AI ARCHITECTURE</text>
+
+    <!-- Main Title -->
+    <text x="600" y="145" text-anchor="middle" fill="url(#textGrad)" font-size="44" font-weight="900" letter-spacing="-0.5" filter="url(#glow)">Awesome Prompt Engineering</text>
+    <text x="600" y="195" text-anchor="middle" fill="#ffffff" font-size="34" font-weight="800" letter-spacing="0.2">&amp; LLM Orchestration</text>
+
+    <!-- Subtitle -->
+    <text x="600" y="240" text-anchor="middle" fill="#94a3b8" font-size="16" font-weight="500" letter-spacing="0.5">
+      Curated Production Stack: Prompt Management, Autonomous Agents, LLM Observability &amp; Evals
+    </text>
+
+    <!-- Badges Row in Banner -->
+    <g transform="translate(435, 260)">
+      <rect x="0" y="0" width="95" height="22" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="47" y="15" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="600">⚡ LLMOps</text>
+
+      <rect x="110" y="0" width="115" height="22" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="167" y="15" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="600">🤖 Multi-Agent</text>
+
+      <rect x="240" y="0" width="90" height="22" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="285" y="15" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="600">📊 Evals</text>
+    </g>
+  </g>
+</svg>
